@@ -3,6 +3,27 @@ git-bash-functions
 
 This file provides 5 functions and 4 prompt colours, plus a reset colour.
 
+
+Installation
+------------
+
+Copy bash.d to $HOME
+
+.. code:: bash
+
+    cp -R bash.d $HOME
+
+Add the following lines to the $HOME/.bashrc, you'll want them near the top,
+usually after `[ -z "$PS1" ] && return`
+
+.. code::
+
+    for f in $HOME/bash.d/*
+    do
+        source $f
+    done
+
+
 Functions
 ---------
 
@@ -32,6 +53,22 @@ _git_modified
 Returns an `S` if you have modified any files git is already aware of but need
 to be staged.
 
+Usage inside $PS1
+-----------------
+
+.. code:: bash
+
+    PS1='\u@\h:$PWD $(_git_parse_branch)'
+
+This should return something similar too
+
+.. code::
+
+    kura@hel:/home/kura/git-bash-functions master
+
+See below for how to add colour in to the prompt.
+
+
 Colours
 -------
 
@@ -56,9 +93,17 @@ _git_reset_color
 
 Reset colour palette
 
+
 Example colour usage
 --------------------
 
 .. code:: bash
 
-    echo $_git_branch_colour$(git_branch)$_git_reset_colour
+    PS1='\u@\h:$PWD $_git_branch_colour$(_git_parse_branch)$_git_reset_color'
+
+How I use these functions
+-------------------------
+
+.. code:: bash
+
+    PS1='\u@\h:$PWD $_git_branch_colour$(_git_parse_branch)$_git_reset_color'

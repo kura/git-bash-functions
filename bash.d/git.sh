@@ -39,7 +39,7 @@ function _git_is_instance {
 function _git_parse_branch {
     if _git_is_instance
     then
-        git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
+        git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1 /'
     fi
 }
 
@@ -48,7 +48,7 @@ function _git_new {
     then
         if [[ $(git ls-files --other --exclude-standard 2> /dev/null) ]]
         then
-            echo "N"
+            echo "N "
         fi
     fi
 }
@@ -57,13 +57,13 @@ function _git_staged {
     if _git_is_instance
     then
         git diff-index --cached --quiet --ignore-submodules HEAD 2> /dev/null
-        (( $? && $? != 128 )) && echo "S"
+        (( $? && $? != 128 )) && echo "S "
     fi
 }
 
 function _git_modified {
     if _git_is_instance
     then
-        git diff --no-ext-diff --ignore-submodules --quiet --exit-code || echo "M"
+        git diff --no-ext-diff --ignore-submodules --quiet --exit-code || echo "M "
     fi
 }

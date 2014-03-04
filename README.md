@@ -1,2 +1,0 @@
-git-bash-functions
-==================

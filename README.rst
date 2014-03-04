@@ -3,6 +3,9 @@ git-bash-functions
 
 This file provides 5 functions and 4 prompt colours, plus a reset colour.
 
+.. image:: example.png
+    :alt: Example $PS1
+
 
 Installation
 ------------
@@ -50,7 +53,7 @@ Retuns an `S` if there are any staged files that need a commit.
 _git_modified
 ~~~~~~~~~~~~~
 
-Returns an `S` if you have modified any files git is already aware of but need
+Returns an `M` if you have modified any files git is already aware of but need
 to be staged.
 
 Usage inside $PS1
@@ -107,3 +110,8 @@ How I use these functions
 .. code:: bash
 
     PS1='\u@\h:$PWD $_git_branch_colour$(_git_parse_branch)$_git_reset_color'
+
+Below is an example of my $PS1 with colours and all functions enabled.
+
+.. image:: example.png
+    :alt: Example $PS1
